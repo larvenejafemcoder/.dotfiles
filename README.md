@@ -1,56 +1,60 @@
-# 🧠 KernelGhost's Terminal Dotfiles (empty repo for now)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Minimal dotfiles setup for terminal environments across **GNOME-based Arch/Ubuntu/Debian systems**.
 
-> ⚙️ Zsh + 🖥 Alacritty + 🧪 GNOME Terminal = Clean, fast terminal everywhere.
+## ✂️ Humanized README (you can paste this over yours)
+
+````md
+# KernelGhost’s terminal dotfiles
+
+Minimal-ish dotfiles for terminal setups on **Arch / Ubuntu / Debian**  
+(mainly GNOME, because yeah)
+
+This repo is kinda empty right now, but the structure + installer are here.
+I mostly use this to avoid redoing my terminal setup every time I reinstall Linux.
+
+Stuff I care about:
+- Zsh
+- Alacritty
+- GNOME Terminal
+- not spending 3 hours reconfiguring fonts again
 
 ---
 
-### 📦 Features
+## What’s in here (or will be)
 
-- ⚙️ Zsh with `oh-my-zsh`, autosuggestions, syntax highlighting, and aliases
-- 🖥 Alacritty config with nerd font, opacity, and style
-- 🧪 GNOME Terminal config import/export using `dconf`
-- 🧾 One-step installer for most Linux distros
+- Zsh config (oh-my-zsh, plugins, aliases, usual stuff)
+- Alacritty config (nerd font, opacity, nothing fancy)
+- GNOME Terminal profile backup via `dconf`
+- A basic install script so I can just run one command and chill
+
+Not claiming this is optimal or clean.  
+It just works *for me*.
 
 ---
 
-### 🚀 Quick Install
+## Install (quick and dirty)
 
 ```bash
-
-# Clone the dotfiles
 git clone https://github.com/larvenejafemcoder/terminal_dotfiles.git
-
-```
-
-```
-cd ~/dotfiles
-```
-
-```
-# Make installer executable
+cd terminal_dotfiles
 chmod +x install.sh
-
-# Run the installer
 ./install.sh
-
 ````
+
+If something breaks, that’s on you (and future me).
 
 ---
 
-### 🛠 Requirements
+## Requirements
 
-Install these first:
+Install these first or the script will obviously complain.
 
-**Arch-based:**
+### Arch-based
 
 ```bash
 sudo pacman -S zsh curl alacritty dconf
 ```
 
-**Ubuntu/Debian-based:**
+### Ubuntu / Debian
 
 ```bash
 sudo apt install zsh curl alacritty dconf-cli
@@ -58,84 +62,71 @@ sudo apt install zsh curl alacritty dconf-cli
 
 ---
 
-### 📂 Folder Structure
+## Repo layout (roughly)
 
-```
+```text
 terminal_dotfiles/
-
-├── alacritty/
-│   └── alacritty.yml               # Alacritty terminal config
-├── gnome-terminal/
-│   └── gnome-terminal.dconfig     # GNOME Terminal dconf export config
+├── alacritty/          # Alacritty config
+├── gnome-terminal/     # dconf export
 ├── zsh/
-│   ├── .zshrc                     # Main Zsh config file
-│   └── aliases.zsh                # Zsh aliases
-├── fonts/                         # Fonts folder somewhere here (not inside zsh/)
-│   └── ...                       # Your font install scripts and font files
-├── install.sh                     # Main install/setup script
-├── README.md                     # Info about usage and setup
-└── LICENSE                       # Licensing info (GNU/MIT)
-
+│   ├── .zshrc
+│   └── aliases.zsh
+├── fonts/              # font files / scripts (location might change)
+├── install.sh
+├── README.md
+└── LICENSE
 ```
+
+This might change. I reorganize stuff a lot.
 
 ---
 
-### 💻 Git Usage Basics (For noobies like me)
+## GNOME Terminal backup / restore
 
-```bash
-# Clone (first time)
-git clone https://github.com/larvenejafemcoder/terminal_dotfiles.git
-
-# Push changes (for contribution purposes, if you dont want to then just dont do this)
-git add .
-git commit -m "Update: yoooo zsh tweaks"
-git push
-
-# Pull latest changes (pull the latest update on my zsh dotfile templates)
-git pull
-
-# Check for updates
-git fetch
-```
-
----
-
-### 📥 Export Your GNOME Terminal Setup
-
-To save your current GNOME Terminal config:
+Export:
 
 ```bash
 dconf dump /org/gnome/terminal/ > gnome-terminal/gnome-terminal.dconf
 ```
 
-To restore it later:
+Restore:
 
 ```bash
 dconf load /org/gnome/terminal/ < gnome-terminal/gnome-terminal.dconf
 ```
 
----
-
-### 🙌 Author
-
-Maintained by [@larvenejafemcoder](https://github.com/larvenejafemcoder)
+Saved my ass more than once.
 
 ---
 
-### 📜 License
+## Git basics (mostly for myself)
 
-MIT – do whatever, just don’t sell it without credit 😤
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+```bash
+git add .
+git commit -m "random tweaks"
+git push
+```
+
+Or just don’t push. That’s also valid.
+
+---
+
+## Notes
+
+* Repo is **English-only** for now
+* Might add Vietnamese comments later, might not
+* Feel free to fork it, break it, or steal parts of it
+
+If you find something cursed, open an issue or just laugh at me.
+
+---
+
+MIT License
+Do whatever, just don’t pretend you wrote it 😤
 
 ```
 
----
 
----
 
-Yo! 👋 If you're reading this, congrats — you're either lost, curious, or actually trying to rice your terminal like a true nerd 🧠✨
-
-This repo is currently **English-only**, but I *might* add multilingual support (Vietnamese?) if people ever stumble across it — not holding my breath tho 😅
-
-Feel free to fork, break, or fix it. Lemme know if something’s janked — or if you just wanna vibe and improve it 🛠️🔥
-
+Say the word.
+```
