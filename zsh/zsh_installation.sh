@@ -1,51 +1,48 @@
 #!/usr/bin/env bash
 set -e
-set -x  # <-- this enables printing every command before execution
 
-echo "== krnl_terminal setup started =="
+echo "Starting krnl_terminal setup"
 
-# 1. Install zsh if missing using yay
+# 1. Ensure zsh is installed
 if ! command -v zsh >/dev/null 2>&1; then
-  echo "Installing zsh with yay..."
+  echo "Installing zsh via yay"
   yay -S --noconfirm zsh
 else
-  echo "Zsh already installed."
+  echo "zsh is already installed"
 fi
 
-# 2. Install Oh My Zsh if missing
+# 2. Install Oh My Zsh if not present
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "Installing Oh My Zsh..."
-  # Disable auto-chsh and auto-run zsh to avoid interruptions
+  echo "Installing Oh My Zsh"
   RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
-  echo "Oh My Zsh already installed."
+  echo "Oh My Zsh is already installed"
 fi
 
-# 3. Clone Powerlevel10k theme if missing
+# 3. Install Powerlevel10k theme
 P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 if [ ! -d "$P10K_DIR" ]; then
-  echo "Cloning Powerlevel10k theme..."
+  echo "Installing Powerlevel10k"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
 else
-  echo "Powerlevel10k already cloned."
+  echo "Powerlevel10k is already installed"
 fi
 
-# 4. Force set Powerlevel10k theme in .zshrc
-echo "Forcing Powerlevel10k theme in .zshrc"
+# 4. Configure Powerlevel10k as default theme
 if grep -q '^ZSH_THEME=' "$HOME/.zshrc"; then
-  sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
+  sed -i 's|^ZSH_THEME=.*|ZSH_THEME="powerlevel10k/powerlevel10k"|' "$HOME/.zshrc"
 else
-  echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >>"$HOME/.zshrc"
+  echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> "$HOME/.zshrc"
 fi
 
-# 5. Add plugins to .zshrc (git, z, sudo, extract)
+# 5. Configure plugins
 if grep -q '^plugins=' "$HOME/.zshrc"; then
   sed -i 's/^plugins=.*/plugins=(git z sudo extract)/' "$HOME/.zshrc"
 else
-  echo 'plugins=(git z sudo extract)' >>"$HOME/.zshrc"
+  echo 'plugins=(git z sudo extract)' >> "$HOME/.zshrc"
 fi
 
-# 6. Download and install FiraCode Medium Nerd Fonts
+# 6. Install Fira Code Medium Nerd Font
 FONT_DIR="$HOME/.local/share/fonts"
 mkdir -p "$FONT_DIR"
 
@@ -54,22 +51,21 @@ BASE_URL="https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraC
 FONTS=(
   "Fira Code Medium Nerd Font Complete.ttf"
   "Fira Code Medium Nerd Font Complete Mono.ttf"
-  "Fira Code Medium Nerd Font Complete Mono.otf"
   "Fira Code Medium Nerd Font Complete.otf"
+  "Fira Code Medium Nerd Font Complete Mono.otf"
 )
 
-echo "Downloading FiraCode Medium Nerd Fonts..."
-
-for fontfile in "${FONTS[@]}"; do
-  curl -fLo "$FONT_DIR/$fontfile" "$BASE_URL/$fontfile"
+echo "Installing Fira Code Medium Nerd Fonts"
+for font in "${FONTS[@]}"; do
+  curl -fLo "$FONT_DIR/$font" "$BASE_URL/$font"
 done
 
-echo "Refreshing font cache..."
 fc-cache -fv
 
-echo "== krnl_terminal setup complete! =="
-echo "IMPORTANT:"
-echo "- Set your terminal font to 'Fira Code Medium Nerd Font' or 'Fira Code Medium Nerd Font Mono'."
-echo "- Restart your terminal emulator."
-echo "- Run 'exec zsh' to reload your shell."
-echo "- On first start, Powerlevel10k will launch its config wizard — follow it!"
+echo "krnl_terminal setup finished"
+echo
+echo "Next steps:"
+echo "- Set terminal font to Fira Code Medium Nerd Font (or Mono variant)"
+echo "- Restart your terminal"
+echo "- Run: exec zsh"
+echo "- Complete the Powerlevel10k configuration on first launch"
