@@ -1,6 +1,5 @@
 
 
-## ✂️ Humanized README (you can paste this over yours)
 
 ````md
 # KernelGhost’s terminal dotfiles
@@ -109,17 +108,4 @@ git push
 
 Or just don’t push. That’s also valid.
 
----
-
-## Notes
-
-* Repo is **English-only** for now
-* Might add Vietnamese comments later, might not
-* Feel free to fork it, break it, or steal parts of it
-
-If you find something cursed, open an issue or just laugh at me.
-
----
-
-MIT License
 ```
