@@ -122,11 +122,4 @@ If you find something cursed, open an issue or just laugh at me.
 ---
 
 MIT License
-Do whatever, just don’t pretend you wrote it 😤
-
-```
-
-
-
-Say the word.
 ```
