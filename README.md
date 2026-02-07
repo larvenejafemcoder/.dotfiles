@@ -4,10 +4,10 @@
 ````md
 # KernelGhost’s terminal dotfiles
 
-Minimal-ish dotfiles for terminal setups on **Arch / Ubuntu / Debian**  
+ALL minimal-ish dotfiles for terminal setups on **Arch / Ubuntu / Debian**  
 (mainly GNOME, because yeah)
 
-This repo is kinda empty right now, but the structure + installer are here.
+This repo is kinda not what i wrote mainly right now, but the structure + installer are here.
 I mostly use this to avoid redoing my terminal setup every time I reinstall Linux.
 
 Stuff I care about:
