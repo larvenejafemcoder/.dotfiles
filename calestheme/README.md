@@ -1,144 +1,209 @@
-# caelestia
 
-This is the main repo of the caelestia dots and contains the user configs for
-apps. This repo also includes an install script to install the entire dots.
 
-## Installation
+# Calestheme – KernelGhost Edition
 
-Simply clone this repo and run the install script (you need
-[`fish`](https://github.com/fish-shell/fish-shell) installed).
+Calestheme is a compositor-agnostic Caelestia fork maintained by KernelGhost.
 
-> [!WARNING]
-> The install script symlinks all configs into place, so you CANNOT
-> move/remove the repo folder once you run the install script. If
-> you do, most apps will not behave properly and some (e.g. Hyprland)
-> will fail to start completely. I recommend cloning the repo to
-> `~/.local/share/caelestia`.
+It provides a unified visual and workflow layer across:
 
-The install script has some options for installing configs for some apps.
+* Hyprland
+* Niri
 
-```
-$ ./install.fish -h
-usage: ./install.sh [-h] [--noconfirm] [--spotify] [--vscode] [--discord] [--aur-helper]
+The goal is deterministic keyboard-driven workflow with consistent aesthetics across compositors.
 
-options:
-  -h, --help                  show this help message and exit
-  --noconfirm                 do not confirm package installation
-  --spotify                   install Spotify (Spicetify)
-  --vscode=[codium|code]      install VSCodium (or VSCode)
-  --discord                   install Discord (OpenAsar + Equicord)
-  --zen                       install Zen browser
-  --aur-helper=[yay|paru]     the AUR helper to use
-```
+---
 
-For example:
+## Features
 
-```sh
-git clone https://github.com/caelestia-dots/caelestia.git ~/.local/share/caelestia
-~/.local/share/caelestia/install.fish
-```
+* Unified theme across terminal, shell, browser, editor
+* Hyprland and Niri support
+* Symlink-based deployment
+* Arch-native packaging (PKGBUILD included)
+* Fish + Starship integration
+* Optional Spotify, VSCode, Zen support
 
-### Manual installation
+---
 
-Dependencies:
+# Installation
 
--   hyprland
--   xdg-desktop-portal-hyprland
--   xdg-desktop-portal-gtk
--   hyprpicker
--   wl-clipboard
--   cliphist
--   inotify-tools
--   app2unit
--   wireplumber
--   trash-cli
--   foot
--   fish
--   fastfetch
--   starship
--   btop
--   jq
--   eza
--   adw-gtk-theme
--   papirus-icon-theme
--   qt5ct-kde
--   qt6ct-kde
--   ttf-jetbrains-mono-nerd
+## Method 1 – Automatic (Recommended)
 
-Install all dependencies and follow the installation guides of the
-[shell](https://github.com/caelestia-dots/shell) and [cli](https://github.com/caelestia-dots/cli)
-to install them.
+### Step 1 – Install dependencies
 
-> [!TIP]
-> If on Arch or an Arch-based distro, there is a meta package available [in this repository](PKGBUILD)
-> that pulls in all dependencies. It can be installed through the install script, makepkg/pacman, yay,
-> paru, or your preferred AUR helper.
+On Arch / Arch-based systems:
 
-Then copy or symlink the `hypr`, `foot`, `fish`, `fastfetch`, `uwsm` and `btop` folders to the
-`$XDG_CONFIG_HOME` (usually `~/.config`) directory. e.g. `hypr -> ~/.config/hypr`.
-Copy `starship.toml` to `$XDG_CONFIG_HOME/starship.toml`.
-
-#### Installing Spicetify configs:
-
-Follow the Spicetify [installation instructions](https://spicetify.app/docs/advanced-usage/installation),
-copy or symlink the `spicetify` folder to `$XDG_CONFIG_HOME/spicetify` and run
-
-```sh
-spicetify config current_theme caelestia color_scheme caelestia custom_apps marketplace
-spicetify apply
+```bash
+sudo pacman -S --needed \
+  fish foot fastfetch btop jq eza starship \
+  hyprland niri \
+  wl-clipboard cliphist hyprpicker \
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
+  wireplumber trash-cli \
+  adw-gtk-theme papirus-icon-theme \
+  qt5ct-kde qt6ct-kde \
+  ttf-jetbrains-mono-nerd
 ```
 
-#### Installing VSCode/VSCodium configs:
+(Optional AUR helper: `yay` or `paru`)
 
-Install VSCode or VSCodium, then copy or symlink `vscode/settings.json` and
-`vscode/keybindings.json` into the `$XDG_CONFIG_HOME/Code/User` (or `$XDG_CONFIG_HOME/VSCodium/User`
-if using VSCodium) folder. Then copy or symlink `vscode/flags.conf` to `$XDG_CONFIG_HOME/code-flags.conf`
-(or `$XDG_CONFIG_HOME/codium-flags.conf` if using VSCodium).
+---
 
-Finally, install the extension VSIX from `vscode/caelestia-vscode-integration`.
+### Step 2 – Clone the repository
 
-```sh
-# Use `codium` if using VSCodium
-code --install-extension vscode/caelestia-vscode-integration/caelestia-vscode-integration-*.vsix
+```bash
+git clone https://github.com/<your-username>/calestheme.git \
+  ~/.local/share/calestheme
 ```
 
-#### Installing Zen Browser configs:
+---
 
-Install Zen Browser, then copy or symlink `zen/userChrome.css` to the `chrome` folder in your
-profile of choice in `~/.zen`. e.g. `zen/userChrome.css -> ~/.zen/<profile>/chrome/userChrome.css`.
+### Step 3 – Run the installer
 
-Now install the native app by copying `zen/native_app/manifest.json` to
-`~/.mozilla/native-messaging-hosts/caelestiafox.json` and replacing the `{{ $lib }}` string in it
-with the absolute path of `~/.local/lib/caelestia` (this must be the absolute path, e.g.
-`/home/user/.local/lib/caelestia`). Then copy or symlink `zen/native_app/app.fish` to
-`~/.local/lib/caelestia/caelestiafox`.
+```bash
+cd ~/.local/share/calestheme
+./install.fish --compositor=hypr
+```
 
-Finally, install the CaelestiaFox extension from [here](https://addons.mozilla.org/en-US/firefox/addon/caelestiafox).
+or
 
-## Updating
+```bash
+./install.fish --compositor=niri
+```
 
-Simply run `yay` to update the AUR packages, then `cd` into the repo directory and run `git pull` to update the configs.
+---
 
-## Usage
+⚠ Important:
 
-> [!NOTE]
-> These dots do not contain a login manager (for now), so you must install a
-> login manager yourself unless you want to log in from a TTY. I recommend
-> [`greetd`](https://sr.ht/~kennylevinsen/greetd) with
-> [`tuigreet`](https://github.com/apognu/tuigreet), however you can use
-> any login manager you want.
+The installer uses symlinks.
 
-There aren't really any usage instructions... these are a set of dotfiles.
+Do NOT move or delete the repository after installation.
 
-Here's a list of useful keybinds though:
+Recommended location:
 
--   `Super` - open launcher
--   `Super` + `#` - switch to workspace `#`
--   `Super` `Alt` + `#` - move window to workspace `#`
--   `Super` + `T` - open terminal (foot)
--   `Super` + `W` - open browser (zen)
--   `Super` + `C` - open IDE (vscodium)
--   `Super` + `S` - toggle special workspace or close current special workspace
--   `Ctrl` `Alt` + `Delete` - open session menu
--   `Ctrl` `Super` + `Space` - toggle media play state
--   `Ctrl` `Super` `Alt` + `R` - restart the shell
+```
+~/.local/share/calestheme
+```
+
+---
+
+# Installation Options
+
+```
+./install.fish [OPTIONS]
+
+--compositor=[hypr|niri]
+--noconfirm
+--spotify
+--vscode=[code|codium]
+--discord
+--zen
+--aur-helper=[yay|paru]
+```
+
+Example:
+
+```bash
+./install.fish --compositor=niri --vscode=codium --spotify
+```
+
+---
+
+# Method 2 – Using PKGBUILD (Arch users)
+
+Inside the repository:
+
+```bash
+makepkg -si
+```
+
+Or with AUR helper:
+
+```bash
+yay -S kernelghost-calestheme
+```
+
+This installs dependencies and runs the install script.
+
+---
+
+# Manual Installation
+
+If you prefer manual control:
+
+### 1. Install dependencies (see list above)
+
+### 2. Symlink configs
+
+```bash
+ln -s ~/calestheme/hypr ~/.config/hypr
+ln -s ~/calestheme/niri ~/.config/niri
+ln -s ~/calestheme/fish ~/.config/fish
+ln -s ~/calestheme/foot ~/.config/foot
+ln -s ~/calestheme/btop ~/.config/btop
+ln -s ~/calestheme/fastfetch ~/.config/fastfetch
+ln -s ~/calestheme/micro ~/.config/micro
+ln -s ~/calestheme/thunar ~/.config/thunar
+ln -s ~/calestheme/uwsm ~/.config/uwsm
+ln -s ~/calestheme/vscode ~/.config/Code/User
+```
+
+Copy Starship:
+
+```bash
+cp starship.toml ~/.config/starship.toml
+```
+
+---
+
+# Compositor Selection Logic
+
+Hyprland and Niri are configured to share:
+
+* Color palette
+* Terminal integration
+* Keybinding philosophy
+* Launcher behavior
+
+Muscle memory remains consistent across compositors.
+
+---
+
+# Updating
+
+```bash
+cd ~/.local/share/calestheme
+git pull
+```
+
+Then update packages:
+
+```bash
+yay -Syu
+```
+
+---
+
+# Design Philosophy
+
+Calestheme is built around:
+
+* Minimal visual noise
+* High keyboard throughput
+* Consistent workspace logic
+* Arch-native reproducibility
+* Compositor flexibility without aesthetic fragmentation
+
+---
+
+# Notes
+
+No login manager is included.
+
+Recommended:
+
+* greetd
+* tuigreet
+
+Or log in via TTY if preferred.
+
+
