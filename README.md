@@ -1,51 +1,125 @@
 
 
 
-````md
-# KernelGhost’s terminal dotfiles
+# KernelGhost Dotfiles
 
-ALL minimal-ish dotfiles for terminal setups on **Arch / Ubuntu / Debian**  
-(mainly GNOME, because yeah)
+Personal Linux configuration repository for terminal setups, theming, and compositor environments.
 
-This repo is kinda not what i wrote mainly right now, but the structure + installer are here.
-I mostly use this to avoid redoing my terminal setup every time I reinstall Linux.
+Built mainly for Arch-based systems, but partially compatible with Ubuntu / Debian.
 
-Stuff I care about:
-- Zsh
-- Alacritty
-- GNOME Terminal
-- not spending 3 hours reconfiguring fonts again
+This repo exists for one reason:
+I refuse to spend 3 hours reconfiguring my terminal every time I reinstall Linux.
 
 ---
 
-## What’s in here (or will be)
+## Scope
 
-- Zsh config (oh-my-zsh, plugins, aliases, usual stuff)
-- Alacritty config (nerd font, opacity, nothing fancy)
-- GNOME Terminal profile backup via `dconf`
-- A basic install script so I can just run one command and chill
+This repository contains:
 
-Not claiming this is optimal or clean.  
-It just works *for me*.
+- Terminal configs (Alacritty, GNOME Terminal)
+- Shell environments (Zsh, Fish, Starship)
+- System theming (GTK, icons, fonts)
+- Fetch setups (fastfetch / neofetch)
+- Compositor-related configs (via `calestheme/`)
+- An install script for reproducible setup
+
+It acts as the source of truth for my user-level Linux environment.
 
 ---
 
-## Install (quick and dirty)
+## Philosophy
+
+- Keyboard-first workflow  
+- Minimal visual noise  
+- Modular structure  
+- Reproducible setup  
+- Arch-native tooling  
+- No overengineering  
+
+Not claiming this is perfect.
+It’s just stable, predictable, and mine.
+
+---
+
+## Repository Structure
+
+```text
+.
+├── alacritty/
+├── calestheme/
+├── fastfetch/
+├── fonts/
+├── gnome-terminal/
+├── neofetch/
+├── starship/
+├── tahoe-theme/
+├── Tahoe-icons/
+├── whitesur-All/
+├── zsh/
+├── config.fish
+├── install.sh
+├── LICENSE
+└── README.md
+```
+
+### Notable Directories
+
+**calestheme/**  
+Unified theme layer (Hyprland / Niri compatible).
+
+**alacritty/**  
+Primary terminal configuration.
+
+**zsh/**  
+Shell configuration, aliases, plugins.
+
+**gnome-terminal/**  
+GNOME Terminal profile backup via `dconf`.
+
+**fonts/**  
+Font layer (JetBrains Mono Nerd, etc).
+
+---
+
+# Installation
+
+## Quick Install
 
 ```bash
-git clone https://github.com/larvenejafemcoder/terminal_dotfiles.git
-cd terminal_dotfiles
+git clone https://github.com/larvenejafemcoder/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 chmod +x install.sh
 ./install.sh
-````
+```
 
-If something breaks, that’s on you (and future me).
+The install script symlinks configs into place.
+
+⚠ Do not move or delete the repo directory after installation if using symlinks.
+
+---
+
+## Manual Install (Full Control)
+
+Clone:
+
+```bash
+git clone https://github.com/larvenejafemcoder/dotfiles.git ~/.dotfiles
+```
+
+Example symlinks:
+
+```bash
+ln -s ~/.dotfiles/zsh ~/.config/zsh
+ln -s ~/.dotfiles/alacritty ~/.config/alacritty
+ln -s ~/.dotfiles/fastfetch ~/.config/fastfetch
+ln -s ~/.dotfiles/config.fish ~/.config/fish/config.fish
+```
 
 ---
 
 ## Requirements
 
-Install these first or the script will obviously complain.
+Install core dependencies before running the installer.
 
 ### Arch-based
 
@@ -59,28 +133,11 @@ sudo pacman -S zsh curl alacritty dconf
 sudo apt install zsh curl alacritty dconf-cli
 ```
 
----
-
-## Repo layout (roughly)
-
-```text
-terminal_dotfiles/
-├── alacritty/          # Alacritty config
-├── gnome-terminal/     # dconf export
-├── zsh/
-│   ├── .zshrc
-│   └── aliases.zsh
-├── fonts/              # font files / scripts (location might change)
-├── install.sh
-├── README.md
-└── LICENSE
-```
-
-This might change. I reorganize stuff a lot.
+Additional packages may be required depending on which components you use.
 
 ---
 
-## GNOME Terminal backup / restore
+## GNOME Terminal Backup / Restore
 
 Export:
 
@@ -94,18 +151,39 @@ Restore:
 dconf load /org/gnome/terminal/ < gnome-terminal/gnome-terminal.dconf
 ```
 
-Saved my ass more than once.
+This alone makes the repo worth keeping.
 
 ---
 
-## Git basics (mostly for myself)
+## Updating
 
 ```bash
-git add .
-git commit -m "random tweaks"
-git push
+cd ~/.dotfiles
+git pull
 ```
 
-Or just don’t push. That’s also valid.
+System packages:
 
+```bash
+sudo pacman -Syu
 ```
+
+or
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+---
+
+## Notes
+
+- Tested mainly on Arch Linux
+- Wayland-first environment
+- GNOME-friendly
+- Structure may evolve over time
+
+This is a living configuration repo.
+If something breaks, future me will fix it.
+
+---
