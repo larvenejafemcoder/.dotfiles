@@ -8,36 +8,46 @@ for ((i = 1; i <= n; i++)); do
   echo " $i"
 done
 
+# Install Starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 
-echo "Starship installed. Creating config..."
+echo "Starship installed."
 
+# Ensure config directory exists
 mkdir -p "$HOME/.config"
 
-cat >"$HOME/.config/starship.toml" <<'EOF'
-"$schema" = 'https://starship.rs/config-schema.json'
-
-add_newline = true
-
-[character]
-success_symbol = '[➜](bold green)'
-
-[package]
-disabled = true
-EOF
+echo "Creating Starship config..."
+starship preset catppuccin-powerline -o "$HOME/.config/starship.toml"
 
 echo "Detecting shell..."
-
 SHELL_NAME=$(basename "$SHELL")
 echo "Detected shell: $SHELL_NAME"
 
-if command -v starship >/dev/null 2>&1; then
-  echo "Initializing Starship for current session..."
-  eval "$(starship init "$SHELL_NAME")"
-else
-  echo "Starship not found in PATH."
-fi
+# Persist initialization
+case "$SHELL_NAME" in
+  bash)
+    if ! grep -q "starship init bash" "$HOME/.bashrc"; then
+      echo 'eval "$(starship init bash)"' >> "$HOME/.bashrc"
+      echo "Added Starship to .bashrc"
+    fi
+    ;;
+  zsh)
+    if ! grep -q "starship init zsh" "$HOME/.zshrc"; then
+      echo 'eval "$(starship init zsh)"' >> "$HOME/.zshrc"
+      echo "Added Starship to .zshrc"
+    fi
+    ;;
+  fish)
+    mkdir -p "$HOME/.config/fish"
+    if ! grep -q "starship init fish" "$HOME/.config/fish/config.fish" 2>/dev/null; then
+      echo 'starship init fish | source' >> "$HOME/.config/fish/config.fish"
+      echo "Added Starship to fish config"
+    fi
+    ;;
+  *)
+    echo "Unsupported shell for auto-init."
+    ;;
+esac
 
-starship preset catppuccin-powerline -o "$HOME/.config/starship.toml"
-
-echo "Starship is now active in this session."
+echo "Starship installation complete."
+echo "Restart your terminal or run: exec $SHELL"
