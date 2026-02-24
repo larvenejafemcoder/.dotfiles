@@ -65,7 +65,7 @@ if command -v pacman >/dev/null 2>&1; then
 elif command -v apt >/dev/null 2>&1; then
     echo "Debian-based system detected"
     sudo apt update
-    sudo apt install -y alacritty zsh curl dconf fish
+    sudo apt install -y alacritty zsh curl fish
 else
     echo "Unsupported system"
     exit 1
