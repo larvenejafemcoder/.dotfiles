@@ -72,6 +72,19 @@ else
 fi
 
 # ===============================
+# Zsh / terminal setup
+# ===============================
+if [ -f "$SCRIPT_DIR/zsh/zsh_installation.sh" ]; then
+    echo "Running zsh/terminal setup..."
+    (
+        cd "$SCRIPT_DIR/zsh"
+        bash zsh_installation.sh
+    )
+else
+    echo "zsh/zsh_installation.sh not found."
+fi
+
+# ===============================
 # Install Alacritty Config
 # ===============================
 echo "Installing Alacritty config..."
@@ -91,6 +104,16 @@ if [ "$INSTALL_FONTS" = true ]; then
     else
         echo "fonts/font.sh not found."
     fi
+
+    # Additional Meslo Nerd Fonts installer
+    if [ -f "$SCRIPT_DIR/fonts/Meslo/install.sh" ]; then
+        (
+            cd "$SCRIPT_DIR/fonts/Meslo"
+            bash install.sh
+        )
+    else
+        echo "fonts/Meslo/install.sh not found."
+    fi
 fi
 
 # ===============================
@@ -109,7 +132,7 @@ if [ "$INSTALL_STARSHIP" = true ]; then
 fi
 
 # ===============================
-# Install Tahoe GNOME Theme
+# Install Themes (Tahoe + WhiteSur)
 # ===============================
 if [ "$INSTALL_THEME" = true ]; then
     echo "Installing Tahoe GNOME theme..."
@@ -120,6 +143,16 @@ if [ "$INSTALL_THEME" = true ]; then
         )
     else
         echo "tahoe-theme directory not found."
+    fi
+
+    echo "Installing WhiteSur GNOME theme..."
+    if [ -f "$SCRIPT_DIR/whitesur-All/install.sh" ]; then
+        (
+            cd "$SCRIPT_DIR/whitesur-All"
+            bash install.sh
+        )
+    else
+        echo "whitesur-All/install.sh not found."
     fi
 fi
 
