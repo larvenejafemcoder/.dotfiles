@@ -1,0 +1,48 @@
+# Rust tooling
+rustup
+rust-analyzer
+
+# Node tooling
+typescript
+ts-node
+nodemon
+pm2
+pnpm
+
+# Python tooling
+poetry
+black
+pylint
+mypy
+
+# Go tooling
+gopls
+delve
+
+# Container
+kubectl
+helm
+minikube
+podman
+podman-docker
+
+# Infrastructure
+terraform
+ansible
+packer
+vagrant
+
+# Database
+redis
+postgresql
+mongodb
+sqlite
+
+# Monitoring
+prometheus
+grafana
+node_exporter
+
+# Shell tools
+shellcheck
+shfmt

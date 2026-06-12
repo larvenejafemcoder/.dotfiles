@@ -1,0 +1,90 @@
+# Core system packages
+git
+curl
+wget
+unzip
+stow
+patterns-devel-base-devel_basis
+
+# Shells
+zsh
+fish
+starship
+
+# Terminals
+kitty
+alacritty
+tmux
+
+# Development
+neovim
+python3
+python3-pip
+nodejs
+npm
+go
+rust
+cargo
+cmake
+make
+gcc
+gcc-c++
+clang
+lldb
+lazygit
+
+# System tools
+fastfetch
+htop
+btop
+bat
+fd
+ripgrep
+fzf
+eza
+zoxide
+jq
+tree
+
+# Docker
+docker
+docker-compose
+containerd
+
+# KVM
+qemu
+qemu-kvm
+libvirt
+virt-manager
+ovmf
+dnsmasq
+bridge-utils
+firewalld
+
+# Desktop
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
+dunst
+rofi
+waybar
+grim
+slurp
+wl-clipboard
+brightnessctl
+pavucontrol
+pipewire
+pipewire-pulse
+wireplumber
+
+# Fonts
+meslo-nerd-fonts
+fira-code-fonts
+google-noto-fonts
+google-noto-emoji-fonts
+fontawesome-fonts
+
+# Apps
+firefox
+mpv
+vlc
+qbittorrent
