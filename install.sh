@@ -46,6 +46,9 @@ GIT_EMAIL="${GIT_EMAIL:-}"
 parse_args() {
     while [[ $# -gt 0 ]]; do
         case "$1" in
+            --tui)
+                exec "$DOTFILES_DIR/tui.sh"
+                ;;
             --dry-run) DRY_RUN=true ;;
             --unattended) UNATTENDED=true ;;
             --rollback) ROLLBACK_MODE=true ;;
@@ -92,6 +95,7 @@ parse_args() {
                 echo "Usage: ./install.sh [OPTIONS]"
                 echo ""
                 echo "General:"
+                echo "  --tui               Interactive TUI (Textual-based)" 
                 echo "  --dry-run           Simulate without making changes"
                 echo "  --unattended        No prompts, full automation"
                 echo "  --rollback          Roll back previous deployment"

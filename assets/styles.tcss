@@ -1,0 +1,216 @@
+Screen {
+    background: #1a1b26;
+}
+
+#title {
+    content-align: center middle;
+    height: 6;
+    background: #1a1b26;
+}
+
+#title-text {
+    text-style: bold;
+    color: #bb9af7;
+    text-align: center;
+}
+
+#subtitle-text {
+    color: #565f89;
+    text-align: center;
+}
+
+#main-menu {
+    width: 50;
+    height: auto;
+    margin: 1 4;
+}
+
+#main-menu > ListView {
+    height: 15;
+    border: solid #3b4261;
+    background: #1f2335;
+}
+
+#main-menu > ListView:focus {
+    border: solid #bb9af7;
+}
+
+#main-menu > ListItem {
+    padding: 1 2;
+    background: #1f2335;
+    color: #a9b1d6;
+}
+
+#main-menu > ListItem:hover {
+    background: #2f354a;
+}
+
+#main-menu > ListItem:focus {
+    background: #3b4261;
+    color: #bb9af7;
+}
+
+#main-menu .selected {
+    background: #3b4261;
+    color: #bb9af7;
+}
+
+#status-bar {
+    height: 3;
+    background: #1f2335;
+    border-top: solid #3b4261;
+    content-align: center middle;
+    color: #565f89;
+}
+
+#grub-screen {
+    height: auto;
+    margin: 1 2;
+}
+
+#grub-screen > Static {
+    margin: 0 2;
+}
+
+#grub-stats {
+    height: auto;
+    background: #1f2335;
+    border: solid #3b4261;
+    margin: 1 0;
+    padding: 1 2;
+}
+
+#grub-stats > Static {
+    margin: 0 1;
+}
+
+.stat-label {
+    color: #565f89;
+}
+
+.stat-value {
+    color: #bb9af7;
+    text-style: bold;
+}
+
+#grub-actions {
+    height: auto;
+    margin: 1 0;
+}
+
+#grub-actions > Button {
+    margin: 0 1;
+    min-width: 20;
+}
+
+Button {
+    background: #2f354a;
+    color: #a9b1d6;
+    border: solid #3b4261;
+}
+
+Button:hover {
+    background: #3b4261;
+    color: #bb9af7;
+}
+
+Button:focus {
+    background: #3b4261;
+    border: solid #bb9af7;
+    color: #bb9af7;
+}
+
+Button.-error {
+    background: #3a1f1f;
+    color: #f7768e;
+    border: solid #f7768e;
+}
+
+Button.-error:hover {
+    background: #4a2a2a;
+}
+
+Button.-success {
+    background: #1f3a2a;
+    color: #9ece6a;
+    border: solid #9ece6a;
+}
+
+#log-view {
+    height: 10;
+    background: #13141f;
+    border: solid #3b4261;
+    margin: 1 0;
+    padding: 1;
+}
+
+#log-view > RichLog {
+    background: #13141f;
+    color: #565f89;
+}
+
+#back-button {
+    dock: bottom;
+    margin: 0 1;
+    min-width: 10;
+}
+
+#modal-container {
+    align: center middle;
+    width: 100%;
+    height: 100%;
+}
+
+#modal {
+    width: 50;
+    height: auto;
+    border: solid #bb9af7;
+    background: #1f2335;
+    padding: 2 3;
+}
+
+#modal-title {
+    text-style: bold;
+    color: #bb9af7;
+    text-align: center;
+}
+
+#modal-text {
+    color: #a9b1d6;
+    text-align: center;
+    margin: 1 0;
+}
+
+#modal-buttons {
+    height: auto;
+    align: center middle;
+}
+
+#modal-buttons > Button {
+    margin: 0 1;
+    min-width: 10;
+}
+
+#package-grid {
+    height: auto;
+    margin: 1 2;
+}
+
+#package-grid > Button {
+    margin: 0 1;
+    min-width: 22;
+}
+
+.header-item {
+    content-align: center middle;
+}
+
+#settings-screen {
+    height: auto;
+    margin: 1 2;
+}
+
+#settings-screen > Button {
+    margin: 1 1;
+    min-width: 30;
+}
