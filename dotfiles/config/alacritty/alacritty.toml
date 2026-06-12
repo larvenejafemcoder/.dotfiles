@@ -1,0 +1,333 @@
+# Alacritty Configuration File
+#
+
+#--------------------------------------------------
+# import
+#--------------------------------------------------
+
+[general]
+import = [
+  "~/.config/alacritty/keybindings.toml",
+  "~/.config/alacritty/window-opacity.toml",
+]
+live_config_reload = true
+working_directory = "None"
+ipc_socket = true
+
+[debug]
+render_timer = false
+persistent_logging = false
+log_level = "Warn"
+print_events = false
+
+#--------------------------------------------------
+# colors
+#--------------------------------------------------
+
+[colors.bright]
+black = "0x3a3a3a"
+blue = "0x77aaff"
+cyan = "0x66eeff"
+green = "0x99ff33"
+magenta = "0x9988ff"
+red = "0xff5588"
+white = "0xffffff"
+yellow = "0xffee44"
+
+[colors.normal]
+black = "0x3a3a3a"
+blue = "0x77aaff"
+cyan = "0x66eeff"
+green = "0x99ff33"
+magenta = "0x9988ff"
+red = "0xff5588"
+white = "0xffffff"
+yellow = "0xffee44"
+
+[colors.primary]
+background = "0x222222"
+foreground = "0xffffff"
+
+[env]
+TERM = "xterm-256color"
+
+#--------------------------------------------------
+# window
+#--------------------------------------------------
+
+[window]
+decorations = "Full" #"None"
+# decorations = "None"
+decorations_theme_variant = "Dark"
+dynamic_padding = false
+dynamic_title = true
+#opacity = 0.80
+option_as_alt = "both"
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 200
+lines = 60
+
+[window.padding]
+x = 4
+y = 4
+
+#--------------------------------------------------
+# font
+#--------------------------------------------------
+
+[font]
+# Linux
+size = 12.0
+
+# macOS
+#size = 15.0
+
+[font.offset]
+x = 0
+y = 1
+
+# [font.bold]
+# family = "HackGen Console NF"
+# style = "Bold"
+#
+# [font.bold_italic]
+# family = "HackGen Console NF"
+# style = "Bold Italic"
+#
+# [font.italic]
+# family = "HackGen Console NF"
+# style = "Italic"
+#
+# [font.normal]
+# family = "HackGen Console NF"
+# style = "Regular"
+
+[font.bold]
+family = "HackGen35 Console NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "HackGen35 Console NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "HackGen35 Console NF"
+style = "Italic"
+
+[font.normal]
+family = "HackGen35 Console NF"
+style = "Regular"
+
+#--------------------------------------------------
+# mouse
+#--------------------------------------------------
+
+[mouse]
+hide_when_typing = false
+bindings = [
+  { mouse = "Right", mods = "Control", action = "Paste" },
+  { mouse = "Middle", action = "PasteSelection" },
+]
+
+# [[mouse.bindings]]
+# action = "PasteSelection"
+# mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",.`|'\" ()[]{}<>="
+
+#--------------------------------------------------
+# terminal
+#--------------------------------------------------
+
+[terminal]
+osc52 = "CopyPaste"
+
+# [terminal.shell]
+# args = ["-l", "-c", 'tmux a -t default || tmux new -s default']
+# program = "/bin/zsh"
+
+# [shell]
+# args = ["-l", "-c", 'zellij attach default || zellij --session=default']
+# program = "/bin/bash"
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+blink_interval = 500
+blink_timeout = 30
+thickness = 0.20
+
+#--------------------------------------------------
+# hints
+#--------------------------------------------------
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open" # On Linux/BSD
+# command = "open" # On macOS
+# command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+#--------------------------------------------------
+# bell
+#--------------------------------------------------
+
+[bell]
+animation = "Ease"
+duration = 0
+color = "#ffffff"
+command = "None"
+# [bell.command]
+# program = "<string>"
+# args = ["<string>",]
+
+#--------------------------------------------------
+# keyboard
+#--------------------------------------------------
+
+#[[keyboard.bindings]]
+#chars = ""
+#key = ""
+#mods = "Shift"
+
+# Alacritty キーバインド設定
+
+# コピー
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+# 貼り付け
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+#mods = "Control|Shift"
+
+# ページアップ（Shiftキーを押しながら）
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mods = "Shift"
+
+# ページダウン（Shiftキーを押しながら）
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mods = "Shift"
+
+# フォントサイズを大きくする
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+# フォントサイズを小さくする
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+# フォントサイズをリセットする
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+# フルスクリーンの切り替え
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+mods = "None"
+
+# 最大化の切り替え
+[[keyboard.bindings]]
+action = "ToggleMaximized"
+key = "F12"
+mods = "None"
+
+# ウィンドウを閉じる
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Control|Shift"
+
+# 新しいウィンドウを開く
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+# Viモードの切り替え
+#[[keyboard.bindings]]
+#action = "ToggleViMode"
+#key = "Escape"
+#mods = "None"
+
+# 検索バーを表示
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "Slash"
+mods = "Control|Shift"
+
+# 検索バーを表示（逆方向）
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = "Left"
+mods = "Control|Shift"
+
+# 検索結果の次を表示
+[[keyboard.bindings]]
+action = "SearchNext"
+key = "N"
+mods = "Control|Shift"
+
+# 検索結果の前を表示
+[[keyboard.bindings]]
+action = "SearchPrevious"
+key = "P"
+mods = "Control|Shift"
+
+# URLを開く
+[[keyboard.bindings]]
+action = "Open"
+key = "U"
+mods = "Control|Shift"
+
+# テキスト選択範囲をコピー
+# [[keyboard.bindings]]
+# action = "CopySelection"
+# key = "C"
+# mods = "Control|Shift"
+
+# クリップボードから選択範囲を貼り付け
+# [[keyboard.bindings]]
+# action = "PasteSelection"
+# key = "V"
+# mods = "Control|Shift"
+
+# Alacritty をリセット（スクロールバッファをクリア）
+[[keyboard.bindings]]
+action = "ClearHistory"
+key = "L"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "dots up\n"
+key = "F1"
+mods = "Shift"

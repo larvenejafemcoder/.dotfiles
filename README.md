@@ -1,89 +1,9 @@
-
-
-
 # KernelGhost Dotfiles
 
-Personal Linux configuration repository for terminal setups, theming, and compositor environments.
+Personal Linux configuration for terminal setups, theming, and desktop environments.
+Built for Arch-based systems, compatible with Ubuntu/Debian and Fedora.
 
-Built mainly for Arch-based systems, but partially compatible with Ubuntu / Debian.
-
-This repo exists for one reason:
-I refuse to spend 3 hours reconfiguring my terminal every time I reinstall Linux.
-
----
-
-## Scope
-
-This repository contains:
-
-- Terminal configs (Alacritty, GNOME Terminal)
-- Shell environments (Zsh, Fish, Starship)
-- System theming (GTK, icons, fonts)
-- Fetch setups (fastfetch / neofetch)
-- Compositor-related configs (via `calestheme/`)
-- An install script for reproducible setup
-
-It acts as the source of truth for my user-level Linux environment.
-
----
-
-## Philosophy
-
-- Keyboard-first workflow  
-- Minimal visual noise  
-- Modular structure  
-- Reproducible setup  
-- Arch-native tooling  
-- No overengineering  
-
-Not claiming this is perfect.
-It’s just stable, predictable, and mine.
-
----
-
-## Repository Structure
-
-```text
-.
-├── alacritty/
-├── calestheme/
-├── fastfetch/
-├── fonts/
-├── gnome-terminal/
-├── neofetch/
-├── starship/
-├── tahoe-theme/
-├── Tahoe-icons/
-├── whitesur-All/
-├── zsh/
-├── config.fish
-├── install.sh
-├── LICENSE
-└── README.md
-```
-
-### Notable Directories
-
-**calestheme/**  
-Unified theme layer (Hyprland / Niri compatible).
-
-**alacritty/**  
-Primary terminal configuration.
-
-**zsh/**  
-Shell configuration, aliases, plugins.
-
-**gnome-terminal/**  
-GNOME Terminal profile backup via `dconf`.
-
-**fonts/**  
-Font layer (JetBrains Mono Nerd, etc).
-
----
-
-# Installation
-
-## Quick Install
+## Quick Start
 
 ```bash
 git clone https://github.com/larvenejafemcoder/dotfiles.git ~/.dotfiles
@@ -92,98 +12,81 @@ chmod +x install.sh
 ./install.sh
 ```
 
-The install script symlinks configs into place.
+## Structure
 
-⚠ Do not move or delete the repo directory after installation if using symlinks.
-
----
-
-## Manual Install (Full Control)
-
-Clone:
-
-```bash
-git clone https://github.com/larvenejafemcoder/dotfiles.git ~/.dotfiles
+```
+.dotfiles/
+├── install.sh                           # Main installer (orchestrates everything)
+├── bootstrap.sh                         # Distro detection + package installation
+├── deploy.sh                            # Symlink deployment (via GNU Stow)
+├── stow/                                # Config files (stow-compatible)
+│   ├── alacritty/.config/alacritty/     # Alacritty terminal config + themes
+│   ├── bash/.bashrc                     # Bash shell config
+│   ├── fastfetch/.config/fastfetch/     # Fastfetch system info config
+│   ├── fish/.config/fish/config.fish    # Fish shell config (SSH agent)
+│   ├── kitty/.config/kitty/             # Kitty terminal config + themes
+│   ├── neofetch/.config/neofetch/       # Neofetch config + profile images
+│   ├── starship/.config/starship.toml   # Starship prompt (catppuccin-powerline)
+│   └── zsh/.config/zsh/                 # Zsh config + aliases
+├── shell/
+│   ├── zsh_setup.sh                     # Oh My Zsh + Powerlevel10k installer
+│   ├── starship_setup.sh                # Starship prompt installer
+│   └── rice.sh                          # Gruvbox ricing (theme, icons, extensions, wallpaper)
+├── themes/
+│   ├── tahoe-theme/                     # macOS Tahoe GNOME theme
+│   └── whitesur-All/                    # WhiteSur GTK theme
+├── fonts/
+│   ├── font.sh                          # Nerd Font downloader
+│   └── Meslo/                           # Meslo LG Nerd Font files + installer
+├── gnome-terminal/                      # GNOME Terminal dconf backup
+└── LICENSE                              # MIT License
 ```
 
-Example symlinks:
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `--minimal` | Symlink configs only (skip packages, themes, fonts) |
+| `--rice` | Also run the Gruvbox ricing script (theme, icons, extensions, wallpaper) |
+| `--no-theme` | Skip GNOME theme installation |
+| `--no-fonts` | Skip font installation |
+| `--no-starship` | Skip Starship prompt |
+| `--no-zsh` | Skip Zsh/Oh My Zsh setup |
+
+## Manual Install
 
 ```bash
-ln -s ~/.dotfiles/zsh ~/.config/zsh
-ln -s ~/.dotfiles/alacritty ~/.config/alacritty
-ln -s ~/.dotfiles/fastfetch ~/.config/fastfetch
-ln -s ~/.dotfiles/config.fish ~/.config/fish/config.fish
+ln -s ~/.dotfiles/stow/alacritty/.config/alacritty ~/.config/alacritty
+ln -s ~/.dotfiles/stow/fish/.config/fish ~/.config/fish
+ln -s ~/.dotfiles/stow/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/stow/bash/.bashrc ~/.bashrc
 ```
 
----
+Or use GNU Stow:
+
+```bash
+cd ~/.dotfiles/stow
+stow -t ~ alacritty fish kitty fastfetch neofetch zsh bash starship
+```
 
 ## Requirements
 
-Install core dependencies before running the installer.
-
-### Arch-based
-
+**Arch:**
 ```bash
-sudo pacman -S zsh curl alacritty dconf
+sudo pacman -S zsh curl alacritty kitty fish stow dconf git unzip
 ```
 
-### Ubuntu / Debian
-
+**Debian/Ubuntu:**
 ```bash
-sudo apt install zsh curl alacritty dconf-cli
+sudo apt install zsh curl git stow dconf-cli unzip fish kitty
 ```
 
-Additional packages may be required depending on which components you use.
+## Features
 
----
-
-## GNOME Terminal Backup / Restore
-
-Export:
-
-```bash
-dconf dump /org/gnome/terminal/ > gnome-terminal/gnome-terminal.dconf
-```
-
-Restore:
-
-```bash
-dconf load /org/gnome/terminal/ < gnome-terminal/gnome-terminal.dconf
-```
-
-This alone makes the repo worth keeping.
-
----
-
-## Updating
-
-```bash
-cd ~/.dotfiles
-git pull
-```
-
-System packages:
-
-```bash
-sudo pacman -Syu
-```
-
-or
-
-```bash
-sudo apt update && sudo apt upgrade
-```
-
----
-
-## Notes
-
-- Tested mainly on Arch Linux
-- Wayland-first environment
-- GNOME-friendly
-- Structure may evolve over time
-
-This is a living configuration repo.
-If something breaks, future me will fix it.
-
----
+- **Terminals**: Alacritty (primary) + Kitty with Nordic/Dank themes
+- **Shells**: Zsh (Oh My Zsh + Powerlevel10k), Fish, Bash
+- **Prompt**: Starship with Catppuccin Powerline preset
+- **Fetch**: fastfetch + neofetch with custom images
+- **Themes**: Tahoe (macOS) + WhiteSur GNOME themes
+- **Fonts**: MesloLG Nerd Font + Fira Code Nerd Font
+- **Standards**: Wayland-first, GNOME-friendly, reproducible setup
