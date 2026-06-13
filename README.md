@@ -6,6 +6,8 @@ Automated Linux dotfiles bootstrap framework. Installs and configures an entire 
 ./install.sh --unattended
 ```
 
+> 📖 **Full documentation:** [docs/README.md](docs/README.md) — or browse individual guides below.
+
 ## Quick Start
 
 ```bash
@@ -16,6 +18,8 @@ chmod +x install.sh
 ```
 
 ## Structure
+
+→ See [docs/INSTALLATION.md](docs/INSTALLATION.md) for a line-by-line breakdown of every file's purpose.
 
 ```
 .dotfiles/
@@ -70,13 +74,45 @@ chmod +x install.sh
 └── LICENSE                           # MIT
 ```
 
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [Overview & Quick Start](docs/README.md) | Landing page, features, project structure, table of contents |
+| [Installation (line-by-line)](docs/INSTALLATION.md) | Every variable, function, and control flow in `install.sh` |
+| [Architecture](docs/ARCHITECTURE.md) | Flowcharts, state machines, module deps, exit codes, data flow |
+| [Commands](docs/COMMANDS.md) | Every flag and subcommand with interactive TUI walkthroughs |
+| [Configuration](docs/CONFIGURATION.md) | Config file schema, `.env` format, profiles, package lists |
+| [Development](docs/DEVELOPMENT.md) | Coding standards, adding tools/dotfiles, testing, CI/CD, release |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Error matrix, recovery, log locations, debug checklist |
+| [Examples](docs/EXAMPLES.md) | Fresh Ubuntu, air-gapped, Arch+Hyprland, CI, multi-machine sync |
+| [API Reference](docs/API.md) | Exit codes, log format, programmatic usage, dotfile database |
+| [Security](docs/SECURITY.md) | Privilege model, download verification, audit trail |
+| [FAQ](docs/FAQ.md) | Top 20 questions |
+| [Glossary](docs/GLOSSARY.md) | Terminology reference (TUI, stow, idempotent, XDG, etc.) |
+
+---
+
 ## Usage
 
 ```bash
 ./install.sh [OPTIONS]
 ```
 
-### General
+→ See [docs/COMMANDS.md](docs/COMMANDS.md) for detailed usage with TUI screenshots.
+
+### Interactive Modes
+
+| Option | Description |
+|--------|-------------|
+| `--setup` / `--interactive` | Full interactive menu (dotfiles + tools selection) |
+| `--dotfiles-only` | Interactive dotfile selection only |
+| `--tools-only` | Interactive dev tools selection only |
+| `--repeat` | Re-apply last saved selections |
+| `--offline` | Skip all downloads (symlinks only) |
+| `--tui` | Rich Python Textual TUI |
+
+### Automated Modes
 
 | Option | Description |
 |--------|-------------|
@@ -132,6 +168,8 @@ DOTFILES_GIT_EMAIL="you@email.com"
 DOTFILES_DESKTOP_PROFILE="hyprland"
 ```
 
+→ See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for all configuration options.
+
 ## Requirements
 
 | Distro | Command |
@@ -140,6 +178,10 @@ DOTFILES_DESKTOP_PROFILE="hyprland"
 | **Debian/Ubuntu** | `sudo apt install zsh curl git stow dconf-cli unzip` |
 | **Fedora** | `sudo dnf install zsh curl git stow dconf unzip` |
 | **openSUSE** | `sudo zypper install zsh curl git stow dconf unzip` |
+
+→ Also requires **dialog** or **whiptail** for interactive mode; **Python 3.10+** for `--tui`.
+
+---
 
 ## Phases
 
@@ -153,6 +195,10 @@ DOTFILES_DESKTOP_PROFILE="hyprland"
 | 6 | Live visual deployment dashboard |
 | 7 | Automated verification + final report + ASCII banner |
 
+→ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for Mermaid flowcharts and data flow diagrams.
+
+---
+
 ## Architecture
 
 - **Modular** — Each subsystem is an independent shell script under `scripts/`
@@ -160,6 +206,10 @@ DOTFILES_DESKTOP_PROFILE="hyprland"
 - **Portable** — Supports Ubuntu, Debian, Arch, Fedora, openSUSE
 - **Resilient** — Automatic backups, dry-run mode, full rollback support
 - **Logged** — Full audit trail at `~/.local/share/dotfiles/install.log`
+
+→ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | [docs/SECURITY.md](docs/SECURITY.md) | [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
+
+---
 
 ## License
 

@@ -214,3 +214,481 @@ Button.-success {
     margin: 1 1;
     min-width: 30;
 }
+
+/* ── System Check Screen ─────────────────────────────────────────────── */
+
+#syscheck-container {
+    padding: 1;
+    height: 100%;
+}
+
+.sc-title {
+    text-style: bold;
+    content-align: center middle;
+    height: 3;
+    color: #bb9af7;
+}
+
+#sc-results {
+    border: solid #3b4261;
+    margin: 1;
+    height: 85%;
+    padding: 1;
+    background: #1f2335;
+}
+
+.sc-section {
+    text-style: bold;
+    color: #bb9af7;
+    margin-top: 1;
+}
+
+.sc-item {
+    margin-left: 1;
+    color: #a9b1d6;
+}
+
+#sc-buttons {
+    height: 3;
+    margin-top: 1;
+    align: center middle;
+}
+
+/* ── Component Selector Screen ───────────────────────────────────────── */
+
+#cs-container {
+    padding: 1;
+    height: 100%;
+}
+
+#cs-top {
+    height: 3;
+    margin-bottom: 1;
+}
+
+.cs-title {
+    text-style: bold;
+    color: #bb9af7;
+    width: 50%;
+}
+
+#cs-count {
+    text-align: right;
+    width: 50%;
+    color: #9ece6a;
+}
+
+#cs-main {
+    height: 86%;
+}
+
+#cs-sidebar {
+    width: 24%;
+    border: solid #3b4261;
+    margin-right: 1;
+    background: #1f2335;
+}
+
+.cs-sidebar-header {
+    background: #3b4261;
+    padding: 1;
+    text-style: bold;
+    content-align: center;
+    color: #bb9af7;
+}
+
+.cs-cat-btn {
+    width: 100%;
+    margin: 0;
+}
+
+.cs-cat-btn.cs-active {
+    background: #3b4261;
+    color: #bb9af7;
+}
+
+#cs-body {
+    width: 75%;
+    border: solid #3b4261;
+    background: #1f2335;
+}
+
+.cs-category-title {
+    background: #3b4261;
+    padding: 1;
+    text-style: bold;
+    color: #bb9af7;
+}
+
+#cs-list {
+    height: 100%;
+    padding: 0 1;
+}
+
+.cs-comp-row {
+    height: auto;
+    padding: 0 0;
+    border: none;
+}
+
+.cs-comp-name {
+    text-style: bold;
+    color: #a9b1d6;
+    margin-left: 1;
+}
+
+.cs-comp-size {
+    color: #9ece6a;
+    margin-left: 3;
+}
+
+#cs-actions {
+    height: 3;
+    margin-top: 1;
+    align: center middle;
+}
+
+/* ── Profile Screen ──────────────────────────────────────────────────── */
+
+#ps-container {
+    padding: 1;
+    height: 100%;
+}
+
+.ps-title {
+    text-style: bold;
+    content-align: center middle;
+    height: 3;
+    color: #bb9af7;
+}
+
+.ps-subtitle {
+    content-align: center middle;
+    height: 2;
+    color: #565f89;
+}
+
+#ps-grid {
+    border: solid #3b4261;
+    margin: 1;
+    height: 80%;
+    padding: 1;
+    background: #1f2335;
+}
+
+.ps-card {
+    border: solid #3b4261;
+    padding: 1;
+    margin: 0 1 1 1;
+    background: #24283b;
+}
+
+.ps-card-title {
+    text-style: bold;
+    color: #bb9af7;
+}
+
+.ps-card-desc {
+    color: #a9b1d6;
+    margin-top: 1;
+}
+
+.ps-card-stats {
+    color: #9ece6a;
+    margin-top: 1;
+    text-style: italic;
+}
+
+.ps-card-actions {
+    margin-top: 1;
+    align: center middle;
+}
+
+#ps-bottom {
+    height: 3;
+    margin-top: 1;
+    align: center middle;
+}
+
+/* ── Install Progress Screen ─────────────────────────────────────────── */
+
+#ip-container {
+    padding: 1;
+    height: 100%;
+}
+
+.ip-title {
+    text-style: bold;
+    content-align: center middle;
+    height: 3;
+    color: #bb9af7;
+}
+
+.ip-profile {
+    content-align: center middle;
+    color: #bb9af7;
+    height: 2;
+}
+
+.ip-total {
+    content-align: center middle;
+    color: #565f89;
+    height: 2;
+}
+
+#ip-progress {
+    border: solid #3b4261;
+    padding: 1;
+    margin: 1;
+    height: 6;
+    background: #1f2335;
+}
+
+.ip-pct {
+    text-align: right;
+    color: #9ece6a;
+}
+
+.ip-bar {
+    color: #9ece6a;
+}
+
+#ip-operation {
+    border: solid #e0af68;
+    padding: 1;
+    margin: 1;
+    height: 5;
+    background: #1f2335;
+}
+
+.ip-op-text {
+    color: #e0af68;
+}
+
+#ip-status-list {
+    border: solid #3b4261;
+    margin: 1;
+    height: 25%;
+    background: #1f2335;
+    padding: 0 1;
+}
+
+.ip-status-success {
+    color: #9ece6a;
+}
+
+.ip-status-failed {
+    color: #f7768e;
+}
+
+.ip-status-installing {
+    color: #e0af68;
+}
+
+#ip-console {
+    border: solid #3b4261;
+    margin: 1;
+    height: 25%;
+    background: #13141f;
+}
+
+#ip-console-text {
+    color: #565f89;
+    background: #13141f;
+    padding: 1;
+}
+
+#ip-buttons {
+    height: 3;
+    margin-top: 1;
+    align: center middle;
+}
+
+/* ── Menu Separator ──────────────────────────────────────────────────── */
+
+.menu-separator {
+    height: 1;
+    background: #3b4261;
+}
+
+/* ── Loading Animations ──────────────────────────────────────────────── */
+
+#loading-container {
+    padding: 2;
+    height: 100%;
+}
+
+.loading-panel {
+    border: double $primary;
+    padding: 2;
+    background: $surface;
+    height: 100%;
+}
+
+.ld-title {
+    text-style: bold;
+    content-align: center;
+    height: 3;
+    color: $success;
+}
+
+.ld-anim {
+    content-align: center;
+    height: 5;
+    text-style: bold;
+}
+
+#ld-anim-center {
+    height: 5;
+    margin: 1;
+}
+
+.ld-msg {
+    content-align: center;
+    height: 3;
+    color: $text;
+    text-style: bold;
+}
+
+.ld-sub {
+    content-align: center;
+    height: 2;
+    color: $text-muted;
+}
+
+#ld-progress {
+    margin: 1;
+}
+
+.ld-pct-text {
+    content-align: center;
+    color: $text-muted;
+}
+
+.ld-dots {
+    align: center middle;
+    height: 3;
+    margin-top: 1;
+}
+
+.ld-dot {
+    width: 3;
+    content-align: center;
+}
+
+/* ── Block Progress Screen ────────────────────────────────────────────── */
+
+#bp-container {
+    padding: 1;
+    height: 100%;
+}
+
+.bp-title {
+    text-style: bold;
+    content-align: center;
+    height: 3;
+    color: $success;
+}
+
+.bp-grid {
+    height: 14;
+    margin: 1;
+    border: solid $primary;
+    padding: 1;
+}
+
+.bp-block {
+    text-style: bold;
+}
+
+.bp-current {
+    border: solid $warning;
+    margin: 1;
+    padding: 1;
+    height: 5;
+}
+
+.bp-current-title {
+    text-style: bold;
+    color: $warning;
+}
+
+.bp-op-text {
+    color: $text;
+    margin-top: 1;
+}
+
+.bp-log {
+    border: solid $primary;
+    margin: 1;
+    height: 35%;
+}
+
+.bp-log-title {
+    text-style: bold;
+    background: $primary;
+    padding: 0 1;
+}
+
+.bp-log-scroll {
+    height: 100%;
+    padding: 1;
+}
+
+.bp-status {
+    margin: 1;
+    padding: 1;
+    background: $surface;
+    height: 3;
+}
+
+#bp-status-text {
+    width: 70%;
+}
+
+#bp-time {
+    text-align: right;
+    width: 30%;
+    color: $text-muted;
+}
+
+/* ── Matrix Loading Screen ────────────────────────────────────────────── */
+
+#mx-container {
+    padding: 1;
+    height: 100%;
+    background: black;
+}
+
+.mx-bar {
+    text-style: bold;
+    content-align: center;
+    height: 3;
+    color: green;
+}
+
+.mx-msg {
+    content-align: center;
+    color: green;
+    margin: 1;
+}
+
+.mx-rain {
+    height: 70%;
+    font-family: monospace;
+}
+
+.mx-stats {
+    margin-top: 1;
+    padding: 1;
+    border: solid green;
+}
+
+#mx-status {
+    color: green;
+}
+
+#mx-progress {
+    color: green;
+    margin-top: 1;
+}
